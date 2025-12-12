@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pokédex — Galería Pokémon</title>
+  <meta name="description" content="Galería simple de Pokémon con navegación, diseño responsivo y estilos modernos." />
+
+  <style>
+    /* ===============================
+       RESET Y VARIABLES
+    =============================== */
+    :root{
+      --bg: #f7f7fb;
+      --surface: #ffffff;
+      --muted: #6b7280;
+      --accent: #ef5350;
+      --accent-2: #ffcb05;
+      --card-shadow: 0 6px 18px rgba(15,23,42,0.08);
+      --radius: 12px;
+      --container-max: 1100px;
+      --txt-dark: #0f172a;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      background: linear-gradient(180deg, var(--bg), #eef2f7);
+      color:var(--txt-dark);
+      line-height:1.45;
+    }
+
+    /* ===============================
+       CONTENEDOR
+    =============================== */
+    .container{
+      max-width:var(--container-max);
+      margin:0 auto;
+      padding:1.25rem;
+    }
+
+    /* ===============================
+       HEADER Y NAVBAR
+    =============================== */
+    .site-header{
+      position:sticky;
+      top:0;
+      backdrop-filter: blur(6px);
+      border-bottom:1px solid rgba(15,23,42,0.05);
+      z-index:50;
+    }
+
+    .header-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:0.6rem;
+      text-decoration:none;
+      color:inherit;
+      font-weight:700;
+    }
+
+    .logo{
+      width:36px;
+      height:36px;
+      border-radius:8px;
+    }
+
+    .main-nav ul{
+      display:flex;
+      gap:0.75rem;
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+
+    .main-nav a{
+      text-decoration:none;
+      padding:0.45rem 0.7rem;
+      border-radius:8px;
+      color:var(--muted);
+      font-weight:600;
+      font-size:0.95rem;
+    }
+
+    .main-nav a:hover{
+      background:rgba(15,23,42,0.06);
+      color:var(--txt-dark);
+    }
+
+    .main-nav a.active{
+      background:rgba(239,83,80,0.15);
+      color:var(--txt-dark);
+    }
+
+    /* ===============================
+       HERO
+    =============================== */
+    .hero{
+      padding:2rem 0;
+    }
+
+    .hero h1{
+      margin:0;
+      font-size:2rem;
+    }
+
+    .hero p{
+      color:var(--muted);
+      margin-top:0.4rem;
+    }
+
+    /* ===============================
+       BUSCADOR
+    =============================== */
+    .search-form{
+      margin-top:1rem;
+      display:flex;
+      gap:0.5rem;
+      max-width:500px;
+    }
+
+    .search-form input{
+      flex:1;
+      padding:0.6rem;
+      border-radius:10px;
+      border:1px solid rgba(15,23,42,0.1);
+    }
+
+    .search-form button{
+      padding:0.6rem 1rem;
+      border-radius:10px;
+      border:none;
+      background:var(--accent);
+      color:white;
+      font-weight:600;
+      cursor:pointer;
+    }
+
+    /* ===============================
+       GALERÍA
+    =============================== */
+    .pokemon-grid{
+      list-style:none;
+      padding:0;
+      margin:1.2rem 0;
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+      gap:1rem;
+    }
+
+    .pokemon-card{
+      background:var(--surface);
+      border-radius:var(--radius);
+      box-shadow:var(--card-shadow);
+      padding:0.9rem;
+      display:flex;
+      gap:0.8rem;
+      transition:0.2s;
+    }
+
+    .pokemon-card:hover{
+      transform:translateY(-6px);
+    }
+
+    .card-media{
+      background:#f9fafb;
+      border-radius:10px;
+      padding:0.4rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:100px;
+      height:100px;
+    }
+
+    .card-body h3{
+      margin:0;
+      font-size:1.05rem;
+    }
+
+    .pokemon-meta{
+      color:var(--muted);
+      font-size:0.9rem;
+      margin:0.2rem 0;
+    }
+
+    .pokemon-desc{
+      font-size:0.95rem;
+      color:#374151;
+    }
+
+    /* ===============================
+       FOOTER
+    =============================== */
+    footer{
+      text-align:center;
+      padding:1.5rem;
+      color:var(--muted);
+      font-size:0.9rem;
+    }
+
+    /* ===============================
+       RESPONSIVE
+    =============================== */
+    @media (max-width:720px){
+      .main-nav ul{ display:none; }
+      .hero h1{ font-size:1.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">
+        <img class="logo" src="data:image/svg+xml;utf8,
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
+          <circle cx='12' cy='12' r='10' fill='%23ffcb05'/>
+          <circle cx='12' cy='12' r='6' fill='%23ef5350'/>
+          <circle cx='12' cy='12' r='2' fill='white'/>
+        </svg>">
+        Mi Pokédex
+      </a>
+
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html" class="active">Inicio</a></li>
+          <li><a href="/pokemons_legendarios">Pokémon legendarios</a></li>
+          <li><a href="#">Juego</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Explora Pokémon</h1>
+      <p>Galería de ejemplo con navegación integrada y diseño moderno.</p>
+
+      <form class="search-form">
+        <input type="search" placeholder="Buscar Pokémon">
+        <button>Buscar</button>
+      </form>
+    </section>
+
+    <ul class="pokemon-grid">
+      <li class="pokemon-card">
+        <div class="card-media">
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" width="80">
+        </div>
+        <div class="card-body">
+          <h3>Pikachu</h3>
+          <p class="pokemon-meta">#025 — Eléctrico</p>
+          <p class="pokemon-desc">Conocido por su energía eléctrica y su carisma.</p>
+        </div>
+      </li>
+
+      <li class="pokemon-card">
+        <div class="card-media">
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" width="80">
+        </div>
+        <div class="card-body">
+          <h3>Bulbasaur</h3>
+          <p class="pokemon-meta">#001 — Planta / Veneno</p>
+          <p class="pokemon-desc">Un Pokémon inicial de la región Kanto.</p>
+        </div>
+      </li>
+    </ul>
+  </main>
+
+  <footer>
+    © 2025 Mi Pokédex — Proyecto educativo
+  </footer>
+</body>
+</html>
