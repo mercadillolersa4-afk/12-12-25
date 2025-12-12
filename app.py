@@ -1,16 +1,17 @@
-from flask import Flask , render_template
+#importar biblioteca
+from flask import Flask , render_template 
 
-app = Flask(__name__)
+#generar servidor
+app = Flask (__name__)
 
-datos = {
-    1 : ["Pikachu" , "Electrico" , "Raichu"],
-    2 : ["Charmander" , "Fuego" , "Charizard"],
-    3 : ["Burbasaur" , "Agua" , "Blastoide"]
-}
+#ruta (principal)
+@app.route ("/")
+def index ():
+    return render_template("index.html") 
 
-@app.route("/")
-def home():
-    return render_template("index.html" , pokemons = datos )
+@app.route ("/pokemons_legendarios")
+def legendarios ():
+    return render_template("legendarios.html") 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+#ejecute el servidor
+app.run (debug = True) 
